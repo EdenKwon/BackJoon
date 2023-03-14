@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            ex2();
+            ex3();
         }
 
         static void ex1()
@@ -19,6 +19,15 @@
             int a = int.Parse(ss[0]);
             int b = int.Parse(ss[1]);
             Console.WriteLine(a + b);
+        }
+
+        static void ex3()
+        {
+            String s = Console.ReadLine();
+            String[] ss = s.Split();
+            int a = int.Parse(ss[0]);
+            int b = int.Parse(ss[1]);
+            Console.WriteLine(a - b);
         }
     }
 }
