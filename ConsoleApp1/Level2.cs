@@ -14,7 +14,7 @@ namespace BackJoon
 {
     internal class Level2
     {
-        static void Main(string[] args)
+        static void Lv2Main(string[] args)
         {
             ex7_1();
         }
