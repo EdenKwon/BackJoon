@@ -6,7 +6,7 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            ex9();
+            ex10();
         }
 
         static void ex1()
@@ -83,5 +83,15 @@ namespace ConsoleApp1
             Console.WriteLine("{0}\n{1}\n{2}\n{3}", (a + b) % c, ((a % c) + (b + c)) % c, (a * b) % c, ((a % c) * (b % c)) % c);
         }
 
-        
+        static void ex10()
+        {
+            string s1 = Console.ReadLine();
+            string s2 = Console.ReadLine();
+
+            int a = int.Parse(s1);
+            int b = int.Parse(s2);
+
+            Console.WriteLine("{0}\n{1}\n{2}\n{3}", a * (b % 10), a * (b % 100 / 10), a * (b / 100), a * b);
+        }
+    }
 }
