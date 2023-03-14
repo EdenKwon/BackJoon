@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.ExceptionServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace BackJoon
 {
@@ -12,7 +13,7 @@ namespace BackJoon
     {
         static void Main(string[] args)
         {
-            ex5();
+            ex6();
         }
 
         static void ex1()
@@ -128,6 +129,31 @@ namespace BackJoon
 
             else
                 b = b - 45;
+
+            Console.WriteLine("{0} {1}", a, b);
+        }
+
+        static void ex6()
+        {
+            String s1 = Console.ReadLine();
+            String s2 = Console.ReadLine();
+            String[] ss = s1.Split();
+
+            int a = int.Parse(ss[0]);
+            int b = int.Parse(ss[1]);
+            int c = int.Parse(s2);
+
+            if (b + c >= 60)
+            {
+                a += (b + c) / 60;
+                b = (b + c) % 60;
+
+                if (a >= 24)
+                    a = a - 24;
+            }
+
+            else
+                b += c;
 
             Console.WriteLine("{0} {1}", a, b);
         }
