@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            ex4();
+            ex5();
         }
 
         static void ex1()
@@ -37,6 +37,15 @@
             int a = int.Parse(ss[0]);
             int b = int.Parse(ss[1]);
             Console.WriteLine(a * b);
+        }
+
+        static void ex5()
+        {
+            String s = Console.ReadLine();
+            String[] ss = s.Split();
+            int a = int.Parse(ss[0]);
+            int b = int.Parse(ss[1]);
+            Console.WriteLine("{0}\n{1}\n{2}\n{3}\n{4}", a+b, a-b, a*b, a/b, a%b);
         }
     }
 }
