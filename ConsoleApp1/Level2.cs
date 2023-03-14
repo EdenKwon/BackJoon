@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Runtime.ExceptionServices;
 using System.Text;
@@ -11,7 +12,7 @@ namespace BackJoon
     {
         static void Main(string[] args)
         {
-            ex3();
+            ex4();
         }
 
         static void ex1()
@@ -85,6 +86,27 @@ namespace BackJoon
             {
                 Console.WriteLine("0");
             }
+        }
+
+        static void ex4()
+        {
+            String s1 = Console.ReadLine();
+            String s2 = Console.ReadLine();
+
+            int a = int.Parse(s1);
+            int b = int.Parse(s2);
+
+            if ( a>0 && b>0)
+                Console.WriteLine("1");
+
+            else if (a<0 && b>0)
+                Console.WriteLine("2");
+
+            else if (a<0 && b<0)
+                Console.WriteLine("3");
+
+            else 
+                Console.WriteLine("4");
         }
     } 
 }
