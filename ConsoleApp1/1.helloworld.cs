@@ -6,7 +6,7 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            ex10();
+            ex11();
         }
 
         static void ex1()
@@ -92,6 +92,18 @@ namespace ConsoleApp1
             int b = int.Parse(s2);
 
             Console.WriteLine("{0}\n{1}\n{2}\n{3}", a * (b % 10), a * (b % 100 / 10), a * (b / 100), a * b);
+        }
+
+        static void ex11()
+        {
+            string s = Console.ReadLine();
+            String[] ss = s.Split();
+
+            long a = long.Parse(ss[0]);
+            long b = long.Parse(ss[1]);
+            long c = long.Parse(ss[2]);
+
+            Console.WriteLine(a+b+c);
         }
     }
 }
