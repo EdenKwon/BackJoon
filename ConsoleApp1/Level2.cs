@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
 using System.Runtime.ExceptionServices;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
+
 
 namespace BackJoon
 {
@@ -13,7 +16,7 @@ namespace BackJoon
     {
         static void Main(string[] args)
         {
-            ex2();
+            ex7();
         }
 
         static void ex1()
@@ -153,6 +156,45 @@ namespace BackJoon
                 b += c;
 
             Console.WriteLine("{0} {1}", a, b);
+        }
+
+        public static int max(int a, int b, int c)
+        {
+            int[] x = { a, b, c };
+            int max = 0;
+            int xLen = x.Length;
+            for(int i=0; i<xLen; i++)
+                if(max < x[i])
+                    max = x[i];
+
+            return max;
+        }
+
+        static void ex7()
+        {
+            String s = Console.ReadLine();
+            String[] ss = s.Split();
+
+            int a = int.Parse(ss[0]);
+            int b = int.Parse(ss[1]);
+            int c = int.Parse(ss[2]);
+
+            if (a.Equals(b) && a.Equals(c))
+            {
+                Console.WriteLine(10000 + a * 1000);
+            }
+
+            else if (a.Equals(b) || a.Equals(c) || b.Equals(c))
+            {
+                if (a.Equals(b))
+                    Console.WriteLine(1000 + a * 100);
+
+                else
+                    Console.WriteLine(1000 + c * 100);
+            }
+
+            else
+                Console.WriteLine(100 * max(a, b, c));
         }
     } 
 }
