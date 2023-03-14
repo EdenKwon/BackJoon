@@ -6,7 +6,7 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            ex12();
+            ex13();
         }
 
         static void ex1()
@@ -112,7 +112,15 @@ namespace ConsoleApp1
             Console.WriteLine(" )  ( ')");
             Console.WriteLine("(  /  )");
             Console.WriteLine(" \\(__)|");
+        }
 
+        static void ex13()
+        {
+            Console.WriteLine("|\\_/|");
+            Console.WriteLine("|q p|   /}");
+            Console.WriteLine("( 0 )\"\"\"\\");
+            Console.WriteLine("|\"^\"`    |");
+            Console.WriteLine("||_/=\\\\__|");
         }
     }
 }
