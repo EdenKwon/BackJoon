@@ -16,7 +16,7 @@ namespace BackJoon
     {
         static void Main(string[] args)
         {
-            ex7();
+            ex7_1();
         }
 
         static void ex1()
@@ -184,7 +184,19 @@ namespace BackJoon
                 Console.WriteLine(10000 + a * 1000);
             }
 
-            else if (a.Equals(b) || a.Equals(c) || b.Equals(c))
+            else if (a == b)
+            {
+                Console.WriteLine(1000 + a * 100);
+            }
+            else if (a.Equals(c) || b.Equals(c))
+            {
+                Console.WriteLine(1000 + c * 100);
+            }
+            else
+            {
+                Console.WriteLine(100 * max(a, b, c));
+            }
+            /*else if (a.Equals(b) || a.Equals(c) || b.Equals(c))
             {
                 if (a.Equals(b))
                     Console.WriteLine(1000 + a * 100);
@@ -194,7 +206,51 @@ namespace BackJoon
             }
 
             else
-                Console.WriteLine(100 * max(a, b, c));
+                Console.WriteLine(100 * max(a, b, c));*/
+        }
+        static void ex7_1() {
+            String s = Console.ReadLine();
+            String[] ss = s.Split();
+
+            int a = int.Parse(ss[0]);
+            int b = int.Parse(ss[1]);
+            int c = int.Parse(ss[2]);
+
+            int[] n = new int[10] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+
+            nCount(n, a);
+            nCount(n, b);
+            nCount(n, c);
+
+            int mostFreq = n.Max();
+            int maxValue = n.ToList().IndexOf(mostFreq);
+
+            Print(mostFreq);
+            Print(maxValue);
+            
+            switch (mostFreq)
+            {
+                case 1:
+                    Console.WriteLine(100 * max(a, b, c));
+                    break;
+                case 2:
+                    Console.WriteLine(1000 + maxValue * 100);
+                    break;
+                case 3:
+                    Console.WriteLine(10000 + maxValue * 1000);
+                    break;
+
+            }
+
+        }
+        static void nCount(int[] n, int a)
+        {
+            n[a] += 1;
+        }
+
+        static void Print(int i) 
+        {
+            Console.WriteLine(i);
         }
     } 
 }
