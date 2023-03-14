@@ -10,7 +10,7 @@ namespace BackJoon
     {
         static void Main(String[] args)
         {
-            ex2();
+            ex3();
         }
 
         static void ex1()
@@ -44,6 +44,17 @@ namespace BackJoon
             {
                 Console.WriteLine(arr[i]);
             }
+        }
+
+        static void ex3()
+        {
+            int a = int.Parse(Console.ReadLine());
+            int sum = 0;
+
+            for (int i = 1; i <= a; i++)
+                sum += i;
+
+            Console.WriteLine(sum);
         }
     }
 }
