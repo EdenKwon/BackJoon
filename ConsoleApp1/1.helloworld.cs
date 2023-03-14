@@ -43,9 +43,18 @@
         {
             String s = Console.ReadLine();
             String[] ss = s.Split();
+            double a = double.Parse(ss[0]);
+            double b = double.Parse(ss[1]);
+            Console.WriteLine(a/b);
+        }
+
+        static void ex6()
+        {
+            String s = Console.ReadLine();
+            String[] ss = s.Split();
             int a = int.Parse(ss[0]);
             int b = int.Parse(ss[1]);
-            Console.WriteLine("{0}\n{1}\n{2}\n{3}\n{4}", a+b, a-b, a*b, a/b, a%b);
+            Console.WriteLine("{0}\n{1}\n{2}\n{3}\n{4}", a + b, a - b, a * b, a / b, a % b);
         }
     }
 }
