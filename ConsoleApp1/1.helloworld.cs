@@ -1,10 +1,12 @@
-﻿namespace ConsoleApp1
+﻿using System.Globalization;
+
+namespace ConsoleApp1
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            ex5();
+            ex7();
         }
 
         static void ex1()
@@ -55,6 +57,12 @@
             int a = int.Parse(ss[0]);
             int b = int.Parse(ss[1]);
             Console.WriteLine("{0}\n{1}\n{2}\n{3}\n{4}", a + b, a - b, a * b, a / b, a % b);
+        }
+
+        static void ex7()
+        {
+            String s = Console.ReadLine();
+            Console.WriteLine(s + "??!");
         }
     }
 }
