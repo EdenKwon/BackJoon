@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +11,7 @@ namespace BackJoon
     {
         static void Main(String[] args)
         {
-            ex3();
+            ex4();
         }
 
         static void ex1()
@@ -55,6 +56,30 @@ namespace BackJoon
                 sum += i;
 
             Console.WriteLine(sum);
+        }
+
+        static void ex4()
+        {
+            int price = int.Parse(Console.ReadLine());
+            int count = int.Parse(Console.ReadLine());
+            int sum = 0;
+
+            for (int i=0; i<count; i++)
+            {
+                string s = Console.ReadLine();
+                string[] ss = s.Split();
+
+                int n = int.Parse(ss[0]);
+                int m = int.Parse(ss[1]);
+
+                sum += n * m;
+            }
+
+            if (price == sum)
+                Console.WriteLine("Yes");
+
+            else
+                Console.WriteLine("No");
         }
     }
 }
