@@ -4,7 +4,7 @@ namespace ConsoleApp1
 {
     internal class Level1
     {
-        static void Main(string[] args)
+        static void Lv1Main(string[] args)
         {
             ex12();
         }

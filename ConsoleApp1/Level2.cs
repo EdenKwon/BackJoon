@@ -10,7 +10,7 @@ namespace BackJoon
     {
         static void Main(string[] args)
         {
-            ex1();
+            ex2();
         }
 
         static void ex1()
@@ -34,6 +34,34 @@ namespace BackJoon
             else
             {
                 Console.WriteLine("==");
+            }
+        }
+
+        static void ex2()
+        {
+            String s = Console.ReadLine();
+            int a = int.Parse(s);
+
+            switch(a/10)
+            {
+                case 10:
+                    Console.WriteLine("A");
+                    break;
+                case 9:
+                    Console.WriteLine("A");
+                    break;
+                case 8:
+                    Console.WriteLine("B");
+                    break;
+                case 7:
+                    Console.WriteLine("C");
+                    break;
+                case 6:
+                    Console.WriteLine("D");
+                    break;
+                default:
+                    Console.WriteLine("F");
+                    break;
             }
         }
     } 
