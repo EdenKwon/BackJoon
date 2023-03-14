@@ -52,6 +52,12 @@ ipch/
 *.sdf
 *.cachefile
 
+# Visual Studio file index?
+*.vsidx
+*.v2
+*.v6.1
+*.suo
+
 # Visual Studio profiler
 *.psess
 *.vsp
