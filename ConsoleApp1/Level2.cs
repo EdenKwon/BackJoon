@@ -12,7 +12,7 @@ namespace BackJoon
     {
         static void Main(string[] args)
         {
-            ex4();
+            ex5();
         }
 
         static void ex1()
@@ -107,6 +107,29 @@ namespace BackJoon
 
             else 
                 Console.WriteLine("4");
+        }
+
+        static void ex5()
+        {
+            String s = Console.ReadLine();
+            String[] ss = s.Split();
+
+            int a = int.Parse(ss[0]);
+            int b = int.Parse(ss[1]);
+
+            if (b < 45)
+            {
+                if (a == 0)
+                    a = a + 23;
+                else
+                    a = a - 1;
+                b = 60 - (45 - b);
+            }
+
+            else
+                b = b - 45;
+
+            Console.WriteLine("{0} {1}", a, b);
         }
     } 
 }
