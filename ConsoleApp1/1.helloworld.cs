@@ -6,7 +6,7 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            ex7();
+            ex8();
         }
 
         static void ex1()
@@ -63,6 +63,13 @@ namespace ConsoleApp1
         {
             String s = Console.ReadLine();
             Console.WriteLine(s + "??!");
+        }
+
+        static void ex8()
+        {
+            string s = Console.ReadLine();
+            int a = int.Parse(s);
+            Console.WriteLine("{0}", a - 543);
         }
     }
 }
