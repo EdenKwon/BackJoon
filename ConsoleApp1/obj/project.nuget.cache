@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "1CcEjUagz1jmHHomdgj+nx+ccNhL5d9WmhKKQGiz/u9aaQ+t980twH9MxTziCzzbqkNkSv7x/41fnZs6Atfd7g==",
+  "dgSpecHash": "mf0LbYbjdWGPC59S4LqhAkJGQPc/n7UPtfVCJVS/3/2VJn4KlwFauTzD3i3bIMqFHV6aKKOVoxhf6ZeDQMI0BQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\User\\workspace\\BackJoon\\ConsoleApp1\\ConsoleApp1.csproj",
+  "projectFilePath": "C:\\Users\\User\\workspace\\BackJoon\\ConsoleApp1\\BackJoon.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

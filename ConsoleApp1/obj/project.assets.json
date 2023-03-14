@@ -14,9 +14,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\workspace\\BackJoon\\ConsoleApp1\\ConsoleApp1.csproj",
-      "projectName": "ConsoleApp1",
-      "projectPath": "C:\\Users\\User\\workspace\\BackJoon\\ConsoleApp1\\ConsoleApp1.csproj",
+      "projectUniqueName": "C:\\Users\\User\\workspace\\BackJoon\\ConsoleApp1\\BackJoon.csproj",
+      "projectName": "BackJoon",
+      "projectPath": "C:\\Users\\User\\workspace\\BackJoon\\ConsoleApp1\\BackJoon.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\User\\workspace\\BackJoon\\ConsoleApp1\\obj\\",
       "projectStyle": "PackageReference",
