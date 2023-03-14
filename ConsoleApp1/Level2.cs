@@ -13,7 +13,7 @@ namespace BackJoon
     {
         static void Main(string[] args)
         {
-            ex6();
+            ex2();
         }
 
         static void ex1()
@@ -47,10 +47,7 @@ namespace BackJoon
 
             switch(a/10)
             {
-                case 10:
-                    Console.WriteLine("A");
-                    break;
-                case 9:
+                case 10 or 9:
                     Console.WriteLine("A");
                     break;
                 case 8:
