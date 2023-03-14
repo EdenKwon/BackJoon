@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.ExceptionServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,7 +11,7 @@ namespace BackJoon
     {
         static void Main(string[] args)
         {
-            ex2();
+            ex3();
         }
 
         static void ex1()
@@ -62,6 +63,27 @@ namespace BackJoon
                 default:
                     Console.WriteLine("F");
                     break;
+            }
+        }
+
+        static void ex3()
+        {
+            String s = Console.ReadLine();
+            int a = int.Parse(s);
+
+            if ( a%4 == 0 && a%100 != 0)
+            {
+                Console.WriteLine("1");
+            }
+
+            else if (a%4 == 0 && a%400 == 0)
+            {
+                Console.WriteLine("1");
+            }
+
+            else
+            {
+                Console.WriteLine("0");
             }
         }
     } 
