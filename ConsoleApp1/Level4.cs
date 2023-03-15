@@ -20,7 +20,7 @@ namespace BackJoon
 
         static void Main()
         {
-            ex4();
+            ex6();
         }
 
         static void ex1()
@@ -100,6 +100,65 @@ namespace BackJoon
             int count = Array.IndexOf(arr, max) + 1;
 
             Print(max, count);
+        }
+
+        static void ex5()
+        {
+            string init = Read();
+            int[] initCondition = init.Split().Select(x => int.Parse(x)).ToArray();
+
+            int a = initCondition[0];
+            int b = initCondition[1];
+
+            //int[] input = new int[3];
+            int[] box = new int[a];
+            int index = 0;
+            while (index < b)
+            {
+                string s = Read();
+                int[] input = s.Split().Select(x => int.Parse(x)).ToArray();
+                int n = input[0];
+                int m = input[1];
+                int num = input[2];
+
+
+            }
+        }
+
+        static void ex6()
+        {
+            string init = Read();
+            int[] initCondition = init.Split().Select(x => int.Parse(x)).ToArray();
+
+            int a = initCondition[0];
+            int b = initCondition[1];
+
+            int[] box = new int[a];
+            int BoxIndex = 0;
+
+            while (BoxIndex < a)
+            {
+                box[BoxIndex] = BoxIndex + 1;
+                BoxIndex++;
+            }
+
+            int index = 0;
+            while (index < b)
+            {
+                string s = Read();
+                int[] input = s.Split().Select(x => int.Parse(x)).ToArray();
+                int n = input[0];
+                int m = input[1];
+                int temp;
+
+                temp = box[n - 1];
+                box[n - 1] = box[m - 1];
+                box[m-1] = temp;
+                index++;
+            }
+                
+            box.ToList().ForEach(x => Console.Write(x + " "));
+            
         }
     }
 }
