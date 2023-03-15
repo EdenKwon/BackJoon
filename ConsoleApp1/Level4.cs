@@ -21,7 +21,7 @@ namespace BackJoon
 
         static void Main()
         {
-            ex7();
+            ex8();
         }
 
         static void ex1()
@@ -171,11 +171,27 @@ namespace BackJoon
                 arr[ins-1] = 1;
                 index++;
             }
-            int result1 = Array.IndexOf(arr, 0);
-            int result2 = Array.LastIndexOf(arr, 0);
-            //int[] resultArr = arr.Where(x => x != 1).Index().ToArray();
-            //resultArr.ToList().ForEach(x => Console.Write(x + "\n"));
+            int result1 = Array.IndexOf(arr, 0)+1;
+            int result2 = Array.LastIndexOf(arr, 0)+1;
             Print(result1, result2);
+        }
+
+        static void ex8()
+        {
+            int[] arr = new int[10];
+            int index = 0;
+            while (index < 10)
+            {
+                string s = Read();
+                //arr = s.Split().Select(x => int.Parse(x)%42).ToArray();
+                int ins = ParseToInt(s);
+                arr[index] = ins % 42;
+                index++;
+            }
+            
+            int count = arr.Distinct().Count();
+
+            Print(count);
         }
     }
 }
