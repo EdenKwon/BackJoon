@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualBasic;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Globalization;
@@ -20,7 +21,7 @@ namespace BackJoon
 
         static void Main()
         {
-            ex6();
+            ex7();
         }
 
         static void ex1()
@@ -156,9 +157,25 @@ namespace BackJoon
                 box[m-1] = temp;
                 index++;
             }
-                
             box.ToList().ForEach(x => Console.Write(x + " "));
-            
+        }
+
+        static void ex7()
+        {
+            int[] arr = new int[30];
+            int index = 0;
+            while (index < 28)
+            {
+                string s = Read();
+                int ins = ParseToInt(s);
+                arr[ins-1] = 1;
+                index++;
+            }
+            int result1 = Array.IndexOf(arr, 0);
+            int result2 = Array.LastIndexOf(arr, 0);
+            //int[] resultArr = arr.Where(x => x != 1).Index().ToArray();
+            //resultArr.ToList().ForEach(x => Console.Write(x + "\n"));
+            Print(result1, result2);
         }
     }
 }
