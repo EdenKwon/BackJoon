@@ -10,9 +10,9 @@ namespace BackJoon
 {
     internal class Level3
     {
-        static void Main(String[] args)
+        static void lvl3Main(String[] args)
         {
-            ex11();
+            ex2();
         }
 
         static void ex1()
@@ -45,6 +45,36 @@ namespace BackJoon
             for(int i=0; i<arr.Length; i++)
             {
                 Console.WriteLine(arr[i]);
+            }
+        }
+
+        static void ex2_1()
+        {
+            Func<int, int, int> TwoAdd = (x, y) => x + y;
+            static int ReadAndParse() => int.Parse(Console.ReadLine());
+            static int ParseToInt(String s) => int.Parse(s);
+
+            int a = ReadAndParse();
+            int[] arr = new int[a];
+            int index = 0;
+
+            foreach (int elem in arr)
+            {
+                string s = Console.ReadLine();
+                string[] ss = s.Split();
+
+                int n = ParseToInt(ss[0]);
+                int m = ParseToInt(ss[1]);
+
+                arr[index] = TwoAdd(n, m);
+                index++;
+            }
+
+            arr.ToList().ForEach(x => Console.WriteLine(x));
+
+            foreach (int i in arr)
+            {
+                Console.WriteLine(i);
             }
         }
 
@@ -194,6 +224,27 @@ namespace BackJoon
                     int c = int.Parse(text[1]);
                     if (b == 0 && c == 0)
                         break;
+
+                    builder.Append((b + c) + "\n");
+                }
+            }
+            Console.WriteLine(builder);
+        }
+
+        static void ex12()
+        {
+            StringBuilder builder = new StringBuilder();
+            while (true)
+            {
+                using (StringReader reader = new StringReader(Console.ReadLine()))
+                {
+                    string s = reader.ReadLine();
+                    if (s == null)
+                        break;
+
+                    string[] text = s.Split(' ');
+                    int b = int.Parse(text[0]);
+                    int c = int.Parse(text[1]);
 
                     builder.Append((b + c) + "\n");
                 }
