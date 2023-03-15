@@ -10,9 +10,9 @@ namespace BackJoon
 {
     internal class Level3
     {
-        static void lvl3Main(String[] args)
+        static void Main(String[] args)
         {
-            ex2();
+            ex12();
         }
 
         static void ex1()
@@ -230,7 +230,7 @@ namespace BackJoon
             }
             Console.WriteLine(builder);
         }
-
+        
         static void ex12()
         {
             StringBuilder builder = new StringBuilder();
@@ -251,5 +251,6 @@ namespace BackJoon
             }
             Console.WriteLine(builder);
         }
+        
     }
 }
