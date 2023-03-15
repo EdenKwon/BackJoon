@@ -12,7 +12,7 @@ namespace BackJoon
     {
         static void Main(String[] args)
         {
-            ex8();
+            ex11();
         }
 
         static void ex1()
@@ -182,5 +182,23 @@ namespace BackJoon
             }
         }
 
+        static void ex11()
+        {
+            StringBuilder builder = new StringBuilder();
+            while(true)
+            {
+                using (StringReader reader = new StringReader(Console.ReadLine()))
+                {
+                    string[] text = reader.ReadLine().Split(' ');
+                    int b = int.Parse(text[0]);
+                    int c = int.Parse(text[1]);
+                    if (b == 0 && c == 0)
+                        break;
+
+                    builder.Append((b + c) + "\n");
+                }
+            }
+            Console.WriteLine(builder);
+        }
     }
 }
