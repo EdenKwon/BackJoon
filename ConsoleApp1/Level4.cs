@@ -15,12 +15,12 @@ namespace BackJoon
 
         static int ParseToInt(string s) => int.Parse(s);
         static void Print(int num) { Console.WriteLine(num); }
-        static void Print(int num1, int num2) { Console.WriteLine("{0} {1}", num1, num2); }
+        static void Print(int num1, int num2) { Console.WriteLine("{0}\n{1}", num1, num2); }
         private static string Read() => Console.ReadLine(); 
 
         static void Main()
         {
-            ex3();
+            ex4();
         }
 
         static void ex1()
@@ -83,6 +83,23 @@ namespace BackJoon
             int min = intArray.Min();
 
             Print(min, max);
+        }
+
+        static void ex4()
+        {
+            int[] arr = new int[9];
+            int index = 0;
+            while(index < arr.Length)
+            {
+                string s = Read();
+                int ins = ParseToInt(s);
+                arr[index++] = ins;
+            }
+
+            int max = arr.Max();
+            int count = Array.IndexOf(arr, max) + 1;
+
+            Print(max, count);
         }
     }
 }
