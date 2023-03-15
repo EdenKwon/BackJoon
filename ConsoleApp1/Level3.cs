@@ -96,7 +96,7 @@ namespace BackJoon
         {
             int a = int.Parse(Console.ReadLine());
             StringBuilder builder = new StringBuilder();
-            for(int i = 1; i <= a; i++)
+            for(int i = 0; i < a; i++)
             {
                 using (StringReader reader = new StringReader(Console.ReadLine()))
                 {
@@ -131,12 +131,12 @@ namespace BackJoon
                 Console.WriteLine(arr[i]);
             }
         }
-        /*
+        
         static void ex8()
         {
             int a = int.Parse(Console.ReadLine());
             StringBuilder builder = new StringBuilder();
-            for (int i = 0; i < a; i++)
+            for (int i = 1; i <= a; i++)
             {
                 using (StringReader reader = new StringReader(Console.ReadLine()))
                 {
@@ -148,7 +148,7 @@ namespace BackJoon
             }
             Console.WriteLine(builder);
         }
-        */
+        
         static void ex9()
         {
             int a = int.Parse(Console.ReadLine());
