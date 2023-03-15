@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Globalization;
 using System.Linq;
 using System.Reflection.Metadata.Ecma335;
@@ -13,11 +15,12 @@ namespace BackJoon
 
         static int ParseToInt(string s) => int.Parse(s);
         static void Print(int num) { Console.WriteLine(num); }
+        static void Print(int num1, int num2) { Console.WriteLine("{0} {1}", num1, num2); }
         private static string Read() => Console.ReadLine(); 
 
         static void Main()
         {
-            ex2();
+            ex3();
         }
 
         static void ex1()
@@ -66,6 +69,20 @@ namespace BackJoon
             int[] resultArray = intArray.Where(x => x < b).ToArray();
 
             resultArray.ToList().ForEach(x => Console.Write(x + " "));
+        }
+
+        static void ex3()
+        {
+            string s = Read();
+            int a = ParseToInt(s);
+
+            string s1 = Read();
+            int[] intArray = s1.Split().Select(x => int.Parse(x)).ToArray();
+
+            int max = intArray.Max();
+            int min = intArray.Min();
+
+            Print(min, max);
         }
     }
 }
