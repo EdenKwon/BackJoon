@@ -4,6 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace BackJoon
 {
@@ -11,7 +12,7 @@ namespace BackJoon
     {
         static void Main(String[] args)
         {
-            ex9();
+            ex8();
         }
 
         static void ex1()
@@ -91,6 +92,23 @@ namespace BackJoon
             Console.WriteLine("int");
         }
 
+        static void ex6()
+        {
+            int a = int.Parse(Console.ReadLine());
+            StringBuilder builder = new StringBuilder();
+            for(int i = 1; i <= a; i++)
+            {
+                using (StringReader reader = new StringReader(Console.ReadLine()))
+                {
+                    string[] text = reader.ReadLine().Split(' ');
+                    int b = int.Parse(text[0]);
+                    int c = int.Parse(text[1]);
+                    builder.Append((b + c) + "\n");
+                }
+            }
+            Console.WriteLine(builder);
+        }
+
         static void ex7()
         {
             int a = int.Parse(Console.ReadLine());
@@ -113,7 +131,24 @@ namespace BackJoon
                 Console.WriteLine(arr[i]);
             }
         }
-
+        /*
+        static void ex8()
+        {
+            int a = int.Parse(Console.ReadLine());
+            StringBuilder builder = new StringBuilder();
+            for (int i = 0; i < a; i++)
+            {
+                using (StringReader reader = new StringReader(Console.ReadLine()))
+                {
+                    string[] text = reader.ReadLine().Split(' ');
+                    int b = int.Parse(text[0]);
+                    int c = int.Parse(text[1]);
+                    builder.Append("Case #"+ i + ": " + b + " + " + c + " = " + (b + c) + "\n");
+                }
+            }
+            Console.WriteLine(builder);
+        }
+        */
         static void ex9()
         {
             int a = int.Parse(Console.ReadLine());
@@ -122,12 +157,30 @@ namespace BackJoon
             {
                 for(int j = 0; j< i; j++)
                 {
-                    Console.Write("*", i);
+                    Console.Write("*");
+                }
+                Console.WriteLine();
+            }     
+        }
+
+        static void ex10()
+        {
+            int a = int.Parse(Console.ReadLine());
+
+            for (int i = 1; i <= a; i++)
+            {
+                for (int j = a - i; j >= 1; j--)
+                {
+                    Console.Write(" ");
+                }
+                
+                for (int j = 0; j < i; j++)
+                {
+                    Console.Write("*");
                 }
                 Console.WriteLine();
             }
-                
-                    
         }
+
     }
 }
