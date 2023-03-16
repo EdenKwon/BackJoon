@@ -21,7 +21,7 @@ namespace BackJoon
 
         static void Main()
         {
-            ex8();
+            ex9();
         }
 
         static void ex1()
@@ -58,7 +58,7 @@ namespace BackJoon
         static void ex2_1()
         {
             string s = Read();
-            int[] initCondition = s.Split().Select(x => int.Parse(x)).ToArray();
+            int[] initCondition = s.Split(" ").Select(x => int.Parse(x)).ToArray();
 
             int a = initCondition[0];
             int b = initCondition[1];
@@ -192,6 +192,54 @@ namespace BackJoon
             int count = arr.Distinct().Count();
 
             Print(count);
+        }
+
+        static void ex9()
+        {
+            string s = Read();
+            int[] initCon = s.Split().Select(x => int.Parse(x)).ToArray();
+            int a = initCon[0];
+            int b = initCon[1];
+
+            int[] box = new int[a];
+            int BoxIndex = 0;
+
+            while (BoxIndex < a)
+            {
+                box[BoxIndex] = BoxIndex + 1;
+                BoxIndex++;
+            }
+
+            int count = 0;
+
+            while (count < b)
+            {
+                string ss = Read();
+                int[] rev = ss.Split().Select(x => int.Parse(x)).ToArray();
+
+                int fInd = rev[0]-1;
+                int length = rev[1]-rev[0]+1;
+
+                Array.Reverse(box, fInd, length);
+                count++;
+            }
+            box.ToList().ForEach(x => Console.Write(x + " "));
+        }
+
+        static void ex10()
+        {
+            string s = Read();
+            int sub = int.Parse(s);
+
+            string ss = Read();
+            int[] score = new int[sub];
+            score = ss.Split().Select(x => int.Parse(x)).ToArray();
+
+            int max = score.Max();
+            int avg = score.Select(x => x).Aggregate((total, next) => total + next);
+            avg = avg / sub;
+            Console.WriteLine(avg);
+
         }
     }
 }
