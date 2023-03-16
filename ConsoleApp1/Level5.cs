@@ -14,9 +14,9 @@ namespace BackJoon
         static void Print(string s) { Console.WriteLine(s); }
         private static string Read() => Console.ReadLine();
 
-        static void Main()
+        static void Main(String[] args)
         {
-            ex2();
+            ex3();
         }
 
         static void ex1()
@@ -35,5 +35,28 @@ namespace BackJoon
 
             Print(len);
         }
+
+        static void ex3()
+        {
+            string s = Read();
+            int testCase = ParseToInt(s);
+            int index = 0;
+
+            StringBuilder builder = new StringBuilder();
+            while (index <  testCase)
+            {
+                using (StringReader reader = new StringReader(Console.ReadLine()))
+                {
+                    string text = reader.ReadLine();
+                    string firstStr = text.Substring(0,1);
+                    string lastStr = text.Substring(text.Length-1, 1);
+
+                    builder.Append(firstStr + lastStr+ "\n");
+                }
+                index++;
+            }
+            Console.WriteLine(builder);
+        }
+
     }
 }
