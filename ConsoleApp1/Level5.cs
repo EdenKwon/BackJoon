@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,7 +18,7 @@ namespace BackJoon
 
         static void Main(String[] args)
         {
-            ex4();
+            ex5();
         }
 
         static void ex1()
@@ -66,6 +68,21 @@ namespace BackJoon
             Console.WriteLine(ascii);
         }
 
+        static void ex5()
+        {
+            string s = Read();
+            int n = ParseToInt(s);
 
+            string num = Read();
+            int sum = 0;
+
+            for(int i=0; i<n; i++)
+            {
+                string ss = num.Substring(i, 1);
+                int a = ParseToInt(ss);
+                sum += a;
+            }
+            Print(sum);
+        }
     }
 }
