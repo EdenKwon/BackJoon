@@ -16,7 +16,7 @@ namespace BackJoon
 
         static void Main()
         {
-            ex1();
+            ex2();
         }
 
         static void ex1()
@@ -24,8 +24,16 @@ namespace BackJoon
             string s = Read();
             string num = Read();
 
-            int num1 = ParseToInt(num)-1;
+            int num1 = ParseToInt(num);
             Print(s[num1].ToString());
+        }
+
+        static void ex2()
+        {
+            string s = Read();
+            int len = s.Length;
+
+            Print(len);
         }
     }
 }
