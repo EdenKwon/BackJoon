@@ -10,7 +10,7 @@ namespace BackJoon
 {
     internal class Level3
     {
-        static void Main(String[] args)
+        static void lvl3Main(String[] args)
         {
             ex12();
         }
