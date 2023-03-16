@@ -16,7 +16,7 @@ namespace BackJoon
 
         static void Main(String[] args)
         {
-            ex3();
+            ex4();
         }
 
         static void ex1()
@@ -57,6 +57,15 @@ namespace BackJoon
             }
             Console.WriteLine(builder);
         }
+
+        static void ex4()
+        {
+            string s = Read();
+            char sChar = s[0];
+            int ascii = (int)sChar;
+            Console.WriteLine(ascii);
+        }
+
 
     }
 }
