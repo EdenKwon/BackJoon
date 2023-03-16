@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.ComponentModel.DataAnnotations;
 using System.Globalization;
 using System.Linq;
@@ -21,7 +22,7 @@ namespace BackJoon
 
         static void Main()
         {
-            ex5();
+            ex10();
         }
 
         static void ex1()
@@ -238,13 +239,18 @@ namespace BackJoon
             int sub = int.Parse(s);
 
             string ss = Read();
-            int[] score = new int[sub];
-            score = ss.Split().Select(x => int.Parse(x)).ToArray();
+            float[] score = new float[sub];
+            score = ss.Split().Select(x => float.Parse(x)).ToArray();
+            Array.Sort(score);
 
-            int max = score.Max();
-            int avg = score.Select(x => x).Aggregate((total, next) => total + next);
-            avg = avg / sub;
-            Console.WriteLine(avg);
+            float max = score.Max();
+            for (int i=0; i<sub; i++)
+            {
+                score[i] = score[i] / max * 100;
+            }
+
+            float avg = score.Select(x => x).Aggregate((total, next) => total + next) / (float)sub;
+            Console.WriteLine(avg.ToString("F6"));
 
         }
     }
