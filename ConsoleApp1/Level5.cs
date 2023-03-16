@@ -18,7 +18,7 @@ namespace BackJoon
 
         static void Main(String[] args)
         {
-            ex10();
+            ex11();
         }
 
         static void ex1()
@@ -45,15 +45,15 @@ namespace BackJoon
             int index = 0;
 
             StringBuilder builder = new StringBuilder();
-            while (index <  testCase)
+            while (index < testCase)
             {
                 using (StringReader reader = new StringReader(Console.ReadLine()))
                 {
                     string text = reader.ReadLine();
-                    string firstStr = text.Substring(0,1);
-                    string lastStr = text.Substring(text.Length-1, 1);
+                    string firstStr = text.Substring(0, 1);
+                    string lastStr = text.Substring(text.Length - 1, 1);
 
-                    builder.Append(firstStr + lastStr+ "\n");
+                    builder.Append(firstStr + lastStr + "\n");
                 }
                 index++;
             }
@@ -76,7 +76,7 @@ namespace BackJoon
             string num = Read();
             int sum = 0;
 
-            for(int i=0; i<n; i++)
+            for (int i = 0; i < n; i++)
             {
                 string ss = num.Substring(i, 1);
                 int a = ParseToInt(ss);
@@ -91,21 +91,21 @@ namespace BackJoon
             int len = str.Length;
 
             int[] arr = Enumerable.Repeat(-1, 26).ToArray(); //check
-            
-            for(int i=0; i<len; i++)
+
+            for (int i = 0; i < len; i++)
             {
                 char c = str[i];
                 int index = c - 'a';
 
-                if(arr[index] == -1)
+                if (arr[index] == -1)
                 {
                     arr[index] = i;
                 }
             }
 
-            foreach(int elem in arr) 
+            foreach (int elem in arr)
             {
-                    Console.Write(elem + " ");
+                Console.Write(elem + " ");
             }
         }
 
@@ -124,7 +124,7 @@ namespace BackJoon
                 int count = ParseToInt(NumStr[0]);
                 string[] str = NumStr[1].Split().ToArray();
 
-                for(int i=0; i<str.Length; i++)
+                for (int i = 0; i < str.Length; i++)
                 {
                     builder.Append(str[i]);
                 }
@@ -149,7 +149,7 @@ namespace BackJoon
             int[] result = new int[2];
 
             int count = 0;
-            while(count < 2)
+            while (count < 2)
             {
                 string reversedString = new string(str[count].Reverse().ToArray());
                 result[count] = ParseToInt(reversedString);
@@ -168,14 +168,14 @@ namespace BackJoon
             int len = s.Length;
             int[] index = new int[len];
 
-            for(int i = 0; i < len; i++)
+            for (int i = 0; i < len; i++)
             {
                 char c = s[i];
                 index[i] = c - 'A';
             }
 
             int count = 0;
-            foreach(int elem in index)
+            foreach (int elem in index)
             {
                 if (elem >= 15 && elem <= 18)
                     count = count + 8;
@@ -188,6 +188,24 @@ namespace BackJoon
             }
 
             Print(count);
+        }
+
+        static void ex11()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            while (true)
+            {
+                using (StringReader reader = new StringReader(Console.ReadLine()))
+                {
+                    string s = reader.ReadLine();
+                    if (s == null)
+                        break;
+                    sb.Append(s + "\n");
+                }
+            }
+
+            Print(sb.ToString());
         }
     }
 }
