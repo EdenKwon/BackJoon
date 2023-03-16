@@ -18,7 +18,7 @@ namespace BackJoon
 
         static void Main(String[] args)
         {
-            ex6();
+            ex8();
         }
 
         static void ex1()
@@ -105,9 +105,40 @@ namespace BackJoon
 
             foreach(int elem in arr) 
             {
-                    Console.WriteLine(elem + " ");
+                    Console.Write(elem + " ");
             }
-            
+        }
+
+        static void ex7()
+        {
+            string s = Read();
+            int num = ParseToInt(s);
+
+            int index = 0;
+            StringBuilder builder = new StringBuilder();
+            while (index < num)
+            {
+                string ss = Read();
+                string[] NumStr = ss.Split().ToArray();
+
+                int count = ParseToInt(NumStr[0]);
+                string[] str = NumStr[1].Split().ToArray();
+
+                for(int i=0; i<str.Length; i++)
+                {
+                    builder.Append(str[i]);
+                }
+                builder.Append("\n");
+                index++;
+            }
+            Print(builder.ToString());
+        }
+
+        static void ex8()
+        {
+            string s = Read();
+            string[] sub = s.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            Print(sub.Length);
         }
     }
 }
