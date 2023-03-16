@@ -18,7 +18,7 @@ namespace BackJoon
 
         static void Main(String[] args)
         {
-            ex8();
+            ex9();
         }
 
         static void ex1()
@@ -138,7 +138,28 @@ namespace BackJoon
         {
             string s = Read();
             string[] sub = s.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            //check
             Print(sub.Length);
+        }
+
+        static void ex9()
+        {
+            string s = Read();
+            string[] str = s.Split().ToArray();
+            int[] result = new int[2];
+
+            int count = 0;
+            while(count < 2)
+            {
+                string reversedString = new string(str[count].Reverse().ToArray());
+                result[count] = ParseToInt(reversedString);
+                count++;
+            }
+
+            if (result[0] > result[1])
+                Print(result[0]);
+            else
+                Print(result[1]);
         }
     }
 }
