@@ -16,9 +16,9 @@ namespace BackJoon
         static void Print(string s) { Console.WriteLine(s); }
         private static string Read() => Console.ReadLine();
 
-        static void Main(String[] args)
+        static void lvl5Main(String[] args)
         {
-            ex11();
+            ex7();
         }
 
         static void ex1()
@@ -122,11 +122,15 @@ namespace BackJoon
                 string[] NumStr = ss.Split().ToArray();
 
                 int count = ParseToInt(NumStr[0]);
-                string[] str = NumStr[1].Split().ToArray();
+                //string[] str = NumStr[1].Split().ToArray();
+                char[] str = NumStr[1].ToCharArray();
 
                 for (int i = 0; i < str.Length; i++)
                 {
-                    builder.Append(str[i]);
+                    for (int j = 0; j < count; j++)
+                    {
+                        builder.Append(str[i]);
+                    }
                 }
                 builder.Append("\n");
                 index++;
