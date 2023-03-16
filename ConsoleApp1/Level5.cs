@@ -18,7 +18,7 @@ namespace BackJoon
 
         static void Main(String[] args)
         {
-            ex9();
+            ex10();
         }
 
         static void ex1()
@@ -160,6 +160,34 @@ namespace BackJoon
                 Print(result[0]);
             else
                 Print(result[1]);
+        }
+
+        static void ex10() //65
+        {
+            string s = Read();
+            int len = s.Length;
+            int[] index = new int[len];
+
+            for(int i = 0; i < len; i++)
+            {
+                char c = s[i];
+                index[i] = c - 'A';
+            }
+
+            int count = 0;
+            foreach(int elem in index)
+            {
+                if (elem >= 15 && elem <= 18)
+                    count = count + 8;
+                else if (elem >= 19 && elem <= 21)
+                    count = count + 9;
+                else if (elem >= 22)
+                    count = count + 10;
+                else
+                    count = count + elem / 3 + 3;
+            }
+
+            Print(count);
         }
     }
 }
