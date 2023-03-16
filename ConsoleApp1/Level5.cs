@@ -18,7 +18,7 @@ namespace BackJoon
 
         static void Main(String[] args)
         {
-            ex5();
+            ex6();
         }
 
         static void ex1()
@@ -83,6 +83,31 @@ namespace BackJoon
                 sum += a;
             }
             Print(sum);
+        }
+
+        static void ex6()
+        {
+            string str = Read();
+            int len = str.Length;
+
+            int[] arr = Enumerable.Repeat(-1, 26).ToArray(); //check
+            
+            for(int i=0; i<len; i++)
+            {
+                char c = str[i];
+                int index = c - 'a';
+
+                if(arr[index] == -1)
+                {
+                    arr[index] = i;
+                }
+            }
+
+            foreach(int elem in arr) 
+            {
+                    Console.WriteLine(elem + " ");
+            }
+            
         }
     }
 }
