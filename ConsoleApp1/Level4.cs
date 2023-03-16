@@ -21,7 +21,7 @@ namespace BackJoon
 
         static void Main()
         {
-            ex9();
+            ex5();
         }
 
         static void ex1()
@@ -111,19 +111,25 @@ namespace BackJoon
             int a = initCondition[0];
             int b = initCondition[1];
 
-            //int[] input = new int[3];
             int[] box = new int[a];
+    
             int index = 0;
             while (index < b)
             {
                 string s = Read();
                 int[] input = s.Split().Select(x => int.Parse(x)).ToArray();
-                int n = input[0];
-                int m = input[1];
+                int fn = input[0]-1;
+                int ln = input[1]-1;
                 int num = input[2];
 
-
+                for (int i = fn; i <= ln; i++)
+                {
+                    box[i] = num;
+                }
+                index++;
             }
+
+            box.ToList().ForEach(x => Console.Write(x + " "));
         }
 
         static void ex6()
