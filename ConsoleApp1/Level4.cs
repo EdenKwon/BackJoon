@@ -20,7 +20,7 @@ namespace BackJoon
         static void Print(int num1, int num2) { Console.WriteLine("{0}\n{1}", num1, num2); }
         private static string Read() => Console.ReadLine(); 
 
-        static void Main()
+        static void lvl4Main()
         {
             ex10();
         }
