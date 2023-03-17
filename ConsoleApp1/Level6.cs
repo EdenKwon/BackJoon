@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,7 +18,7 @@ namespace BackJoon
 
         static void Main(String[] args)
         {
-            ex3();
+            ex5();
         }
 
         static void ex1()
@@ -76,6 +77,71 @@ r`-_   ,'  ,/
             }
 
             Print(sb.ToString());
+        }
+
+        static void ex4()
+        {
+            string init = Read();
+            int[] initCondition = init.Split().Select(x => int.Parse(x)).ToArray();
+
+            int a = initCondition[0];
+            int b = initCondition[1];
+
+            int[] box = new int[a];
+            int BoxIndex = 0;
+
+            while (BoxIndex < a)
+            {
+                box[BoxIndex] = BoxIndex + 1;
+                BoxIndex++;
+            }
+
+            int index = 0;
+            while (index < b)
+            {
+                string s = Read();
+                int[] input = s.Split().Select(x => int.Parse(x)).ToArray();
+                int bb = input[0];
+                int eb = input[1];
+                int mb = input[2];
+
+                for (int i = mb; i <= eb; i++)
+                {
+                    box[i] = box[bb + i - 1];
+                }
+
+                for (int i = bb; i <= mb; i++)
+                {
+                    box[i] = box[mb + i];
+                }
+
+            }
+
+            box.ToList().ForEach(x => Console.Write(x + " "));
+
+        }
+
+        static void ex5()
+        {
+            string s = Read();
+            int len = s.Length;
+            char[] ss = s.ToCharArray();
+
+            int boolNum = 0;
+            for(int i=0; i<len; i++)
+            {
+                if (ss[i] != ss[len - i -1])
+                {
+                    Print(0);
+                    break;
+                }
+
+                if(i == len - i -1 || i == len - i)
+                {
+                    Print(1);
+                    break;
+                }
+            }
         }
     }
 }
