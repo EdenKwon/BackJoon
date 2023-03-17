@@ -14,11 +14,12 @@ namespace BackJoon
         static void Print(int num) { Console.WriteLine(num); }
         static void Print(int num1, int num2) { Console.WriteLine("{0}\n{1}", num1, num2); }
         static void Print(string s) { Console.WriteLine(s); }
+        static void Print(char cha) { Console.WriteLine(cha); }
         private static string Read() => Console.ReadLine();
 
         static void Main(String[] args)
         {
-            ex5();
+            ex6();
         }
 
         static void ex1()
@@ -127,21 +128,55 @@ r`-_   ,'  ,/
             int len = s.Length;
             char[] ss = s.ToCharArray();
 
-            int boolNum = 0;
-            for(int i=0; i<len; i++)
+            bool isPal = true;
+
+            for(int i=0; i<len/2; i++)
             {
                 if (ss[i] != ss[len - i -1])
                 {
-                    Print(0);
-                    break;
-                }
-
-                if(i == len - i -1 || i == len - i)
-                {
-                    Print(1);
+                    isPal = false;
                     break;
                 }
             }
+
+            if(isPal)
+            {
+                Print(1);
+            }
+
+            else
+            {
+                Print(0);
+            } 
         }
+
+        static void ex6()
+        {
+            string s = Read();
+            int[] index = new int[s.Length];    
+
+            for(int i=0; i<s.Length; i++)
+            {
+                char c = s[i];
+                index[i] = c;
+                if (index[i] >=97)
+                {
+                    index[i] -= 32;
+                }
+            }
+
+            //chatGPT
+            var groups = index.GroupBy(n => n);
+            var maxCount = groups.Max(g => g.Count());
+            var mostCommonValues = groups.Where(g => g.Count() == maxCount).Select(g => g.Key);
+    
+            int count = mostCommonValues.Count();
+            if (count > 1)
+            {
+                Print("?");
+            }
+            else
+                Print((char)mostCommonValues.First());
+        }  
     }
 }
