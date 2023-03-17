@@ -10,7 +10,7 @@ namespace BackJoon
 {
     internal class Level6
     {
-        static int ParseToInt(string s) => int.Parse(s);
+        static int ToInt(string s) => int.Parse(s);
         static void Print(int num) { Console.WriteLine(num); }
         static void Print(int num1, int num2) { Console.WriteLine("{0}\n{1}", num1, num2); }
         static void Print(string s) { Console.WriteLine(s); }
@@ -19,7 +19,7 @@ namespace BackJoon
 
         static void Main(String[] args)
         {
-            ex6();
+            ex7();
         }
 
         static void ex1()
@@ -37,7 +37,7 @@ r`-_   ,'  ,/
         static void ex2()
         {
             string s = Read();
-            int[] ss = s.Split().Select(x=> ParseToInt(x)).ToArray();
+            int[] ss = s.Split().Select(x=> ToInt(x)).ToArray();
 
             int[] whitePiece = new int[6];
             int index = 0;
@@ -58,7 +58,7 @@ r`-_   ,'  ,/
         static void ex3()
         {
             string s = Read();
-            int num = ParseToInt(s);
+            int num = ToInt(s);
             //string[] prtStar = new string[2*num -1];
             //prtStar = Enumerable.Repeat(" ", 2*num -1).ToArray();
             //int count = 0;
@@ -165,7 +165,7 @@ r`-_   ,'  ,/
                 }
             }
 
-            //chatGPT
+            //chatGPT.check
             var groups = index.GroupBy(n => n);
             var maxCount = groups.Max(g => g.Count());
             var mostCommonValues = groups.Where(g => g.Count() == maxCount).Select(g => g.Key);
@@ -178,5 +178,32 @@ r`-_   ,'  ,/
             else
                 Print((char)mostCommonValues.First());
         }  
+
+        static void ex7()
+        {
+            string s = Read();
+            int testCase = ToInt(s);
+
+            StringBuilder sb = new StringBuilder();
+
+            int index = 0;
+            while (index < testCase)
+            {
+                string stuScore = Read();
+                int[] arr = stuScore.Split().Select(s => ToInt(s)).ToArray();
+
+                int stu = arr[0];
+                int sum = arr.Sum()- stu;
+                float avg = sum / (float) stu;
+
+                int winner = arr.Where(x => x > avg).Count();
+                float winnerAvg = (float)winner / (float)stu * 100;
+                sb.Append(winnerAvg.ToString("F3") + "%\n");
+                index++;
+            }
+            Console.WriteLine(sb);
+        }
+
+        
     }
 }
