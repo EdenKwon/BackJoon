@@ -19,7 +19,7 @@ namespace BackJoon
 
         static void Main(String[] args)
         {
-            ex7();
+            ex10();
         }
 
         static void ex1()
@@ -105,17 +105,16 @@ r`-_   ,'  ,/
                 int bb = input[0];
                 int eb = input[1];
                 int mb = input[2];
+                int[] tempArr = new int[eb - bb + 1];
+                Array.Copy(box, bb-1, tempArr, 0, eb - bb+1);
 
-                for (int i = mb; i <= eb; i++)
+
+
+                for (int i = bb-1; i <= eb-1; i++)
                 {
-                    box[i] = box[bb + i - 1];
+                    box[i]= tempArr[(i+mb-bb)%(tempArr.Length)+bb-1];
                 }
-
-                for (int i = bb; i <= mb; i++)
-                {
-                    box[i] = box[mb + i];
-                }
-
+                index++;
             }
 
             box.ToList().ForEach(x => Console.Write(x + " "));
@@ -204,6 +203,93 @@ r`-_   ,'  ,/
             Console.WriteLine(sb);
         }
 
-        
+        static void ex8()
+        {
+
+        }
+
+        static void ex9()
+        {
+            string s = Read();
+            int num = ToInt(s);
+            int count = 0;
+
+            int idx = 0;
+            while(idx < num)
+            {
+                string word = Read();
+                char[] c = word.ToCharArray();
+
+                
+            }
+        }
+
+        static double Convert(string c)
+        {
+            double grade = 0;
+            switch(c)
+            {
+                case "A+":
+                    grade += 4.5;
+                    break;
+                case "A0":
+                    grade += 4.0;
+                    break;
+                case "B+":
+                    grade += 3.5;
+                    break;
+                case "B0":
+                    grade += 3.0;
+                    break;
+                case "C+":
+                    grade += 2.5;
+                    break;
+                case "C0":
+                    grade += 2.0;
+                    break;
+                case "D+":
+                    grade += 1.5;
+                    break;
+                case "D0":
+                    grade += 1.0;
+                    break;
+                case "F":
+                    grade += 0.0;
+                    break;
+                default:
+                    break;
+            }
+            return grade;    
+        }
+
+        static void ex10()
+        {
+            double sumSub = 0;
+            double sum = 0;
+            int index = 0;
+
+            while(index <20)
+            {
+                string s= Read();
+                string[] ss = s.Split();
+
+                double sub = double.Parse(ss[1]);
+                string grade = ss[2];
+
+                if(grade == "P")
+                {
+                    sub = 0;
+                }
+                double convertedGrade = Convert(grade);
+
+                sumSub += sub;
+                sum += convertedGrade * sub;
+
+                index++;
+            }
+
+            double avg = sum / sumSub;
+            Print(avg.ToString("F6"));
+        }
     }
 }
