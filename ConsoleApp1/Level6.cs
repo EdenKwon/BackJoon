@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Tracing;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
@@ -19,7 +20,7 @@ namespace BackJoon
 
         static void Main(String[] args)
         {
-            ex10();
+            ex4();
         }
 
         static void ex1()
@@ -102,20 +103,19 @@ r`-_   ,'  ,/
             {
                 string s = Read();
                 int[] input = s.Split().Select(x => int.Parse(x)).ToArray();
-                int bb = input[0];
-                int eb = input[1];
-                int mb = input[2];
+                //인덱스 기준
+                int bb = input[0]-1;
+                int eb = input[1]-1;
+                int mb = input[2]-1;
                 int[] tempArr = new int[eb - bb + 1];
-                Array.Copy(box, bb-1, tempArr, 0, eb - bb+1);
+                Array.Copy(box, bb, tempArr, 0, eb - bb+1);
 
-
-
-                for (int i = bb-1; i <= eb-1; i++)
+                for (int i = bb; i <= eb; i++)
                 {
-                    box[i]= tempArr[(i+mb-bb)%(tempArr.Length)+bb-1];
+                    box[i]= tempArr[(i+mb-bb-bb)%tempArr.Length];
                 }
                 index++;
-            }
+            } 
 
             box.ToList().ForEach(x => Console.Write(x + " "));
 
@@ -212,13 +212,31 @@ r`-_   ,'  ,/
         {
             string s = Read();
             int num = ToInt(s);
-            int count = 0;
 
             int idx = 0;
             while(idx < num)
             {
                 string word = Read();
-                char[] c = word.ToCharArray();
+                int[] count = new int[word.Length];
+                count[0] = word[0];
+                int groupWord = 0;
+
+                for (int i = 1; i<word.Length; i++)
+                {
+                    if (count[i - 1] != (int)word[i])
+                    {
+                        count[i] = (int)word[i];
+                        foreach (int elem in count)
+                        {
+                            if (elem == (int)word[i])
+                            {
+                                break;
+                            }
+                        }
+                    }
+                    else
+                        continue;
+                }
 
                 
             }
