@@ -20,7 +20,7 @@ namespace BackJoon
 
         static void Main(String[] args)
         {
-            ex4();
+            ex8();
         }
 
         static void ex1()
@@ -205,7 +205,16 @@ r`-_   ,'  ,/
 
         static void ex8()
         {
+            string[] croatia = { "c=", "c-", "dz=", "d-", "lj", "nj", "s=", "z=" };
+            string s = Read();
 
+            int count = 0;
+            while (count < croatia.Length)
+            {
+                s = s.Replace(croatia[count], "0");
+                count++;
+            }
+            Print(s.Count());
         }
 
         static void ex9()
