@@ -20,7 +20,7 @@ namespace BackJoon
 
         static void Main(String[] args)
         {
-            ex8();
+            ex7();
         }
 
         static void ex1()
@@ -194,8 +194,10 @@ r`-_   ,'  ,/
                 int stu = arr[0];
                 int sum = arr.Sum()- stu;
                 float avg = sum / (float) stu;
+                int[] score = new int[arr.Length-1];
+                Array.Copy(arr, 1, score, 0, arr.Length-1);
 
-                int winner = arr.Where(x => x > avg).Count();
+                int winner = score.Where(x => x > avg).Count();
                 float winnerAvg = (float)winner / (float)stu * 100;
                 sb.Append(winnerAvg.ToString("F3") + "%\n");
                 index++;
