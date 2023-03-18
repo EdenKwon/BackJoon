@@ -20,7 +20,7 @@ namespace BackJoon
 
         static void Main(String[] args)
         {
-            ex7();
+            ex9();
         }
 
         static void ex1()
@@ -225,32 +225,32 @@ r`-_   ,'  ,/
             int num = ToInt(s);
 
             int idx = 0;
-            while(idx < num)
+            int groupWord = s.Length;
+            while (idx < num)
             {
                 string word = Read();
-                int[] count = new int[word.Length];
-                count[0] = word[0];
-                int groupWord = 0;
+                int[] count = new int[26];
 
+                count[(int)(word[0] - 'a')] = 1;
+
+                //Array.ForEach(count, (number) => Console.WriteLine(Array.IndexOf(count, number)));
+                
                 for (int i = 1; i<word.Length; i++)
                 {
-                    if (count[i - 1] != (int)word[i])
+                    if (word[i - 1] != (int)word[i])
                     {
-                        count[i] = (int)word[i];
-                        foreach (int elem in count)
-                        {
-                            if (elem == (int)word[i])
-                            {
-                                break;
-                            }
-                        }
+                        count[(int)word[i] - 'a']++;
                     }
-                    else
-                        continue;
+                    
+                    if (Array.IndexOf(count, 2) != -1)
+                    {
+                        groupWord--;
+                        break;
+                    }
                 }
-
-                
+                idx++;
             }
+            Print(groupWord);
         }
 
         static double Convert(string c)
