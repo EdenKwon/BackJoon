@@ -16,7 +16,7 @@ namespace ConsoleApp1
         static void Print(string s) { Console.WriteLine(s); }
         private static string Read() => Console.ReadLine();
 
-        static void Main(String[] args)
+        static void lvl8Main(String[] args)
         {
             ex6();
         }

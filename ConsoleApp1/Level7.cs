@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Common;
 using System.Globalization;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Security;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,7 +20,7 @@ namespace BackJoon
 
         static void Main(String[] args)
         {
-            ex3();
+            ex4();
         }
 
         static int[,] TransMatrix(int[,] matrix, int row, int column)
@@ -110,6 +111,21 @@ namespace BackJoon
             Console.WriteLine(sb);
         }
 
+        static void makeTrue(bool[,] paper, int x, int y)
+        {
+            for(int i = x; i < x + 10; i++)
+            {
+                for (int j = y; j < y + 10; j++) 
+                    paper[i, j] = true;
+            }
+        }
+
+        static int CountTrue(bool[,] paper)
+        {
+            int count = paper.Cast<bool>().Count(x => x);
+            return count;
+        }
+
         static void ex1() //matrix row column
         {
             string s = Read();
@@ -154,6 +170,31 @@ namespace BackJoon
             char[][] words = new char[5][];
             TransWords(words, 5);
             PrintToRow(words, FindMaxColumn(words, 5));
+        }
+
+        static void ex4()
+        {
+            bool[,] paper = new bool[100, 100];
+
+            string s = Read();
+            int num = ToInt(s);
+
+            int idx = 0;
+            while(idx < num)
+            {
+                string ss = Read();
+                int[] sqr = ss.Split().Select(x => ToInt(x)).ToArray();
+
+                int x = sqr[0];
+                int y = sqr[1];
+
+                makeTrue(paper, x, y);
+                idx++;
+            }
+
+            int count = 0;
+            count = CountTrue(paper);
+            Print(count);
         }
     }
 }
