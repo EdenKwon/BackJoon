@@ -30,7 +30,7 @@ namespace BackJoon
 
         static void Main(String[] args)
         {
-            ex5();
+            ex6();
         }
 
         static int getMinLen(int a, int b) // a<=b
@@ -76,6 +76,17 @@ namespace BackJoon
             }
         }
 
+        static void check_Triangle(int a, int b, int c, Action<string> Callback)
+        {
+            string s = null;
+            if (a == 60 && b == 60 && c == 60) s = "Equilateral";
+            else if (a + b + c == 180 && a == b || a == c || b == c) s = "Isosceles";
+            else if (a + b + c == 180 && a != b && a != c && b != c) s = "Scalene";
+            else s =  "Error";
+
+            Callback(s);
+        }
+
         static void ex1()
         {
             string s = Read();
@@ -104,7 +115,8 @@ namespace BackJoon
             string s = Read();
             int[] p = s.Split().Select(x => ToInt(x)).ToArray();
             return new Point(p[0], p[1]);
-        }
+        } 
+
         static void ex3()
         {
             var Point1 = ReadPoint();
@@ -144,6 +156,18 @@ namespace BackJoon
             int xLen = x.Max() - x.Min();
             int ylen = y.Max() - y.Min();
             Print(xLen * ylen);
+        }
+
+        static void ex6()
+        {
+            int[] angle = new int[3];
+            for(int i=0; i<3; i++)
+            {
+                string s = Read();
+                angle[i] = ToInt(s);
+            }
+
+            check_Triangle(angle[0], angle[1], angle[2], Print);
         }
     }
 }
