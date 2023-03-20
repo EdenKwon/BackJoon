@@ -28,7 +28,7 @@ namespace BackJoon
                 return c;
         }
 
-        static void Main(String[] args)
+        static void lvl9Main(String[] args)
         {
             ex8();
         }
