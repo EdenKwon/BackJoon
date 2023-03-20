@@ -18,7 +18,7 @@ namespace BackJoon
         static void Print(char cha) { Console.WriteLine(cha); }
         private static string Read() => Console.ReadLine();
 
-        static void Main(String[] args)
+        static void lvl6Main(String[] args)
         {
             ex9();
         }
