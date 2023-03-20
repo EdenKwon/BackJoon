@@ -30,7 +30,7 @@ namespace BackJoon
 
         static void Main(String[] args)
         {
-            ex7();
+            ex8();
         }
 
         static int getMinLen(int a, int b) // a<=b
@@ -202,6 +202,18 @@ namespace BackJoon
 
                 sb.Append(check_ToLength(len[0], len[1], len[2]) + "\n");
             }
+        }
+
+        static void ex8()
+        {
+            string s = Read();
+            int[] side = s.Split().Select(x => ToInt(x)).ToArray();
+
+            Array.Sort(side);
+            if (side[2] >= side[0] + side[1])
+                side[2] = side[0] + side[1] - 1;
+
+            Print(side[0] + side[1] + side[2]);
         }
     }
 }
