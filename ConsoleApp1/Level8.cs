@@ -202,5 +202,29 @@ namespace ConsoleApp1
                 }
             }
         }
+
+        static void ex7()
+        {
+            string s = Read();
+            int init = ToInt(s);
+
+            StringBuilder sb = new();
+            int count = 0;
+            while (count < init)
+            {
+                string number = Read();
+                int num = ToInt(number);
+
+                for (int i = num / 2; i >= 2; i--)
+                {
+                    if (isPrime(i) && isPrime(num - i))
+                    {
+                        sb.Append(i + " " + (num - i) + "\n"); break;
+                    }
+                }
+                count++;
+            }
+            Print(sb.ToString());
+        }
     }
 }
