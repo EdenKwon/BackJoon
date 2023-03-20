@@ -12,6 +12,7 @@ namespace BackJoon
         static int ToInt(string s) => int.Parse(s);
         static void Print(int num) { Console.WriteLine(num); }
         static void Print(int num1, int num2) { Console.WriteLine("{0} {1}", num1, num2); }
+        static void Print(long num) { Console.WriteLine(num); }
         static void Print(string s) { Console.WriteLine(s); }
         private static string Read() => Console.ReadLine();
 
@@ -27,7 +28,7 @@ namespace BackJoon
 
         static void Main(String[] args)
         {
-            ex3();
+            ex4();
         }
 
         static int getMinLen(int a, int b) // a<=b
@@ -112,5 +113,15 @@ namespace BackJoon
             Point4 = findPoint(Point1, Point2, Point3);
             Print(Point4.X, Point4.Y);
         }
+
+        static void ex4()
+        {
+            string s = Read();
+            long num = ToInt(s);
+
+            Print(num * 4);
+        }
+
+
     }
 }
