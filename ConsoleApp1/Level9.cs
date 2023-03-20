@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,6 +14,7 @@ namespace BackJoon
         static void Print(int num) { Console.WriteLine(num); }
         static void Print(int num1, int num2) { Console.WriteLine("{0} {1}", num1, num2); }
         static void Print(long num) { Console.WriteLine(num); }
+        static void Print(double num) { Console.WriteLine(num); }
         static void Print(string s) { Console.WriteLine(s); }
         private static string Read() => Console.ReadLine();
 
@@ -28,7 +30,7 @@ namespace BackJoon
 
         static void Main(String[] args)
         {
-            ex4();
+            ex5();
         }
 
         static int getMinLen(int a, int b) // a<=b
@@ -122,6 +124,26 @@ namespace BackJoon
             Print(num * 4);
         }
 
+        static void ex5()
+        {
+            string s = Read();
+            int num = ToInt(s);
 
+            int[] x = new int[num];
+            int[] y = new int[num];
+
+            for(int i=0; i< num; i++)
+            {
+                string point = Read();
+                int[] p = point.Split().Select(x => ToInt(x)).ToArray();
+
+                x[i] = p[0];
+                y[i] = p[1];
+            }
+
+            int xLen = x.Max() - x.Min();
+            int ylen = y.Max() - y.Min();
+            Print(xLen * ylen);
+        }
     }
 }
