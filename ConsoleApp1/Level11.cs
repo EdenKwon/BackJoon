@@ -18,7 +18,7 @@ namespace BackJoon
 
         static void Main(String[] args)
         {
-            ex1();
+            ex2();
         }
 
         static int Find_Max(int[] card, int sum)
@@ -72,6 +72,30 @@ namespace BackJoon
             return max; 
         }
 
+        static void Find_Small(int n)
+        {
+            for (int i = 1; i <= n; i++)
+            {
+                int sum = i;
+                int num = i;
+
+                while (num > 0)
+                {
+                    sum += num % 10;
+                    num /= 10;
+                }
+
+                if (sum == n)
+                {
+                    Console.WriteLine(i);
+                    return;
+                }
+            }
+
+            Console.WriteLine("0");
+        }
+
+
         static void ex1()
         {
             string s = Read();
@@ -84,6 +108,14 @@ namespace BackJoon
             int[] card = ss.Split().Select(x =>ToInt(x)).ToArray();
 
             Print(Find_Max(card, sum));
+        }
+
+        static void ex2()
+        {
+            string s = Read();
+            int num = ToInt(s);
+
+            Find_Small(num);
         }
     }
 }
