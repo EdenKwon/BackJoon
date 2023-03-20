@@ -30,7 +30,7 @@ namespace BackJoon
 
         static void Main(String[] args)
         {
-            ex6();
+            ex7();
         }
 
         static int getMinLen(int a, int b) // a<=b
@@ -76,15 +76,32 @@ namespace BackJoon
             }
         }
 
-        static void check_Triangle(int a, int b, int c, Action<string> Callback)
+        static void check_ToAngle(int a, int b, int c, Action<string> Callback)
         {
             string s = null;
             if (a == 60 && b == 60 && c == 60) s = "Equilateral";
             else if (a + b + c == 180 && a == b || a == c || b == c) s = "Isosceles";
             else if (a + b + c == 180 && a != b && a != c && b != c) s = "Scalene";
-            else s =  "Error";
+            else s = "Error";
 
             Callback(s);
+        }
+
+        static string check_ToLength(int a, int b, int c)
+        {
+            string s = null;
+            if (a == 0 || b == 0 || c == 0)
+                s = "Invalid";
+            else if (a == b && b == c)
+                s = "Equilateral";     
+            else if ((a + b) <= c || (a + c) <= b || (b + c) <= a) 
+                s = "Invalid";
+            else if ((a == b && a != c) || (a == c && b != c) || (b == c && a != b))
+                s = "Isosceles";
+            else
+                s = "Scalene";
+
+            return s;
         }
 
         static void ex1()
@@ -115,7 +132,7 @@ namespace BackJoon
             string s = Read();
             int[] p = s.Split().Select(x => ToInt(x)).ToArray();
             return new Point(p[0], p[1]);
-        } 
+        }
 
         static void ex3()
         {
@@ -144,7 +161,7 @@ namespace BackJoon
             int[] x = new int[num];
             int[] y = new int[num];
 
-            for(int i=0; i< num; i++)
+            for (int i = 0; i < num; i++)
             {
                 string point = Read();
                 int[] p = point.Split().Select(x => ToInt(x)).ToArray();
@@ -161,13 +178,30 @@ namespace BackJoon
         static void ex6()
         {
             int[] angle = new int[3];
-            for(int i=0; i<3; i++)
+            for (int i = 0; i < 3; i++)
             {
                 string s = Read();
                 angle[i] = ToInt(s);
             }
 
-            check_Triangle(angle[0], angle[1], angle[2], Print);
+            check_ToAngle(angle[0], angle[1], angle[2], Print);
+        }
+
+        static void ex7()
+        {
+            StringBuilder sb = new();
+            while(true)
+            {
+                string s = Read();
+                int[] len = s.Split().Select(x =>ToInt(x)).ToArray();
+                if (len[0] == 0 && len[1] == 0 && len[2] == 0)
+                {
+                    Print(sb.ToString());
+                    break;
+                }
+
+                sb.Append(check_ToLength(len[0], len[1], len[2]) + "\n");
+            }
         }
     }
 }
