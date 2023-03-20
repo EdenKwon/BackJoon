@@ -18,9 +18,9 @@ namespace BackJoon
         static void Print(string s) { Console.WriteLine(s); }
         private static string Read() => Console.ReadLine();
 
-        static void Main(String[] args)
+        static void lvl7Main(String[] args)
         {
-            ex4();
+            ex3();
         }
 
         static int[,] TransMatrix(int[,] matrix, int row, int column)
@@ -96,7 +96,7 @@ namespace BackJoon
             return maxLength;
         }
 
-        static void PrintToRow(char[][] matrix, int maxColumn)
+        static void PrintToRow(char[][] matrix, int maxColumn, Action<string> Callback)
         {
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < maxColumn; i++)
@@ -108,7 +108,7 @@ namespace BackJoon
                     sb.Append(matrix[j][i]);
                 }
             }
-            Console.WriteLine(sb);
+            Callback(sb.ToString());
         }
 
         static void makeTrue(bool[,] paper, int x, int y)
@@ -169,7 +169,7 @@ namespace BackJoon
         {
             char[][] words = new char[5][];
             TransWords(words, 5);
-            PrintToRow(words, FindMaxColumn(words, 5));
+            PrintToRow(words, FindMaxColumn(words, 5), Print);
         }
 
         static void ex4()
