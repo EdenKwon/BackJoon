@@ -90,13 +90,13 @@ namespace BackJoon
         static string check_ToLength(int a, int b, int c)
         {
             string s = null;
-            if (a == 0 || b == 0 || c == 0)
+            if (a <= 0 || b <= 0 || c <= 0)
+                s = "Invalid";
+            else if ((a + b) <= c || (a + c) <= b || (b + c) <= a) 
                 s = "Invalid";
             else if (a == b && b == c)
                 s = "Equilateral";     
-            else if ((a + b) <= c || (a + c) <= b || (b + c) <= a) 
-                s = "Invalid";
-            else if ((a == b && a != c) || (a == c && b != c) || (b == c && a != b))
+            else if (a == b || a == c || b == c)
                 s = "Isosceles";
             else
                 s = "Scalene";
