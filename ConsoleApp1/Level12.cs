@@ -19,7 +19,7 @@ namespace BackJoon
 
         static void Main(String[] args)
         {
-            ex6();
+            ex7();
         }
 
         static void insertion_sort(int[] elem)
@@ -258,6 +258,23 @@ namespace BackJoon
             {
                 t.Join();
             }
-        }        
+        }
+        
+        static void ex7()
+        {
+            string s = Read();
+            int num = ToInt(s);
+            int len = s.Length;
+            int[] elem = new int[len];
+
+            for (int i = len; i > 0; i--)
+            {
+                elem[len - i] = num / (int)Math.Pow(10, i - 1);
+                num -= elem[len - i] * (int)Math.Pow(10, i - 1);
+            }
+            Array.Sort(elem);
+            Array.Reverse(elem);
+            elem.ToList().ForEach(x => Console.Write(x));
+        }
     }
 }
