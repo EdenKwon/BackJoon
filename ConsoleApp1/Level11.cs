@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,7 +19,7 @@ namespace BackJoon
 
         static void Main(String[] args)
         {
-            ex3();
+            ex4();
         }
 
         static int Find_Max(int[] card, int sum)
@@ -145,15 +146,99 @@ namespace BackJoon
                 y = 0;
             }
 
-            if (eq1[0] == 0)
+            finally
             {
-                x = (eq2[2] - eq2[1] * y) / eq2[0];
+                if (eq1[0] == 0)
+                {
+                    x = (eq2[2] - eq2[1] * y) / eq2[0];
+                }
+
+                else
+                    x = (eq1[2] - eq1[1] * y) / eq1[0];
+
+                Print(x, y);
+            }
+            
+        }
+
+        static int check_Least(char[,] arr, int row, int column)
+        {
+            char[] ar = new char[64];
+            int count = 0;
+            int k = 0;
+            for (int i = row; i < row + 8; i++)
+            {
+                if (i % 2 != 0)
+                {
+                    for (int j = column + 7; j >= column; j--)
+                    {
+                        ar[k] = arr[i, j];
+                        k++;
+                    }
+                }
+
+                else if (i % 2 == 0)
+                {
+                    for (int j = column; j < column + 8; j++)
+                    {
+                        ar[k] = arr[i, j];
+                        k++;
+                    }
+                }
             }
 
-            else 
-                x = (eq1[2] - eq1[1] * y) / eq1[0];
+            if (ar[0] == ar[1])
+            {
+                if (ar[0] == 'B') ar[1] = 'W';
+                else ar[1] = 'B';
+                count++;
+            }
 
-            Print(x, y);
+            for (int n=0; n<64; n++) 
+            {
+                
+                
+                if (n % 2 == 0)
+                {
+                    if (ar[0] != ar[n]) count++;
+                }
+
+                else
+                {
+                    if (ar[1] != ar[n]) count++;
+                }
+            }
+            return count;
+        }
+
+        static int rePaint(char[,] arr, int row, int column)
+        {
+            int count = 64;
+            for(int k=0; k<=row-8; k++)
+            {
+                for(int i=0; i<=column-8; i++)
+                {
+                    if (check_Least(arr, k, i) < count)
+                        count = check_Least(arr, k, i);
+                }       
+            }
+            return count;
+        }
+
+        static void ex4()
+        {
+            string s = Read();
+            int[] size = s.Split().Select(x => ToInt(x)).ToArray();
+            char[,] arr = new char[size[0], size[1]];
+
+            for(int i=0; i < size[0]; i++)
+            {
+                string ss = Read();
+                for (int j = 0; j < size[1]; j++)
+                    arr[i, j] = ss[j];
+            }
+
+            Print(rePaint(arr, size[0], size[1]));
         }
     }
 }
