@@ -19,7 +19,7 @@ namespace BackJoon
 
         static void Main(String[] args)
         {
-            ex4();
+            ex5();
         }
 
         static int Find_Max(int[] card, int sum)
@@ -239,6 +239,30 @@ namespace BackJoon
             }
 
             Print(rePaint(arr, size[0], size[1]));
+        }
+
+        static void ex5()
+        {
+            string s = Read();
+            int num = ToInt(s);
+
+            int number = 666;
+            int count = 0;
+            string target = "666";
+            while(count < num)
+            {
+                string nNum = number.ToString();
+                for(int i=0; i<nNum.Length-2; i++)
+                {
+                    if (nNum.Substring(i, 3) == target)
+                    {
+                        count++; break;
+                    }
+                }
+                number++;
+            }
+
+            Print(number-1);
         }
     }
 }
