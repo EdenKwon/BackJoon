@@ -43,27 +43,31 @@ namespace BackJoon
             return arr[num / 2];
         }
 
-        static int find_average(int[] arr)
+        static float find_average(int[] arr)
         {
-            int sum = Enumerable.Sum(arr) / arr.Length;
+            float sum = (float)Enumerable.Sum(arr) / arr.Length;
+            if (sum == 0 && Math.Sign(sum) == -1)
+            {
+                sum = 0;
+            }
             return sum;
         }
 
         static int find_mode(int[] arr) //chatGPT
         {
-            int[] modes = arr.GroupBy(x => x)
-                          .OrderBy(g => g.Count())
-                          .Select(g => g.Key)
-                          .ToArray();
+            var modes = arr.GroupBy(x => x)
+                          .OrderByDescending(g => g.Count());
+            int maxCount = modes.First().Count();
+            int secondCount = modes.Skip(1).Count();
 
-            if(modes.Length == 1)
+            if(maxCount == secondCount)
             {
-                return modes[0];
+                return modes.Skip(1).First().Key;
             }
             
             else
             {
-                return modes.OrderBy(m => m).Skip(1).First();
+                return modes.First().Key;
             }
         }
 
@@ -222,7 +226,7 @@ namespace BackJoon
             Thread[] threads = new Thread[]
             {
                 new Thread(() => {
-                    Print(find_average(elem));
+                    Console.WriteLine(find_average(elem).ToString("F0"));
                     sem.Release();
                 }),
                 new Thread(() =>
