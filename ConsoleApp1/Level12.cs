@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Formats.Asn1.AsnWriter;
 
 namespace BackJoon
 {
@@ -18,7 +19,7 @@ namespace BackJoon
 
         static void Main(String[] args)
         {
-            ex1();
+            ex3();
         }
 
         static void insertion_sort(int[] elem)
@@ -51,6 +52,65 @@ namespace BackJoon
             insertion_sort(elem);
             //Array.Sort(elem);
             elem.ToList().ForEach(x => Print(x));
+        }
+
+        private static int find_middle(int[] arr)
+        {
+            Array.Sort(arr);
+            return arr[2];
+        }
+
+        private static int find_average(int[] arr)
+        {
+            int sum = Enumerable.Sum(arr) / arr.Length;
+            return sum;
+        }
+
+        static void ex2()
+        {
+            int[] elem = new int[5];
+
+            for (int i = 0; i < 5; i++)
+            {
+                string element = Read();
+                elem[i] = ToInt(element);
+            }
+
+            Semaphore sem = new Semaphore(0, 1);
+
+            Thread avgThread = new Thread(() => 
+            {
+                Print(find_average(elem));
+                sem.Release(); 
+            });
+
+            Thread midThread = new Thread(() => 
+            {
+                 sem.WaitOne();
+                 Print(find_middle(elem));
+            });
+
+            avgThread.Start();
+            midThread.Start();
+
+            avgThread.Join();
+            midThread.Join();
+        }
+
+        static void ex3()
+        {
+            string s = Read();
+            int[] init = s.Split().Select(x => ToInt(x)).ToArray();
+            int num = init[0];
+            int cut = init[1];
+            int[] score = new int[num];
+
+            string ss = Read();
+            score = ss.Split().Select(x => ToInt(x)).ToArray();
+
+            Array.Sort(score);
+            Array.Reverse(score);
+            Print(score[cut-1]);
         }
     }
 }
