@@ -19,7 +19,7 @@ namespace BackJoon
 
         static void Main(String[] args)
         {
-            ex5();
+            ex6();
         }
 
         static int Find_Max(int[] card, int sum)
@@ -263,6 +263,33 @@ namespace BackJoon
             }
 
             Print(number-1);
+        }
+
+        static void ex6()
+        {
+            string s = Read();
+            int num = ToInt(s);
+
+            int x = 0;
+            int y = 0;
+            for(int i=0; i<=num/3; i++)
+            {
+                if ((num - 3*i)%5 == 0)
+                {
+                    y = i;
+                    x = (num - 3*i)/5;
+                    break;
+                }
+
+                else if (i == num/3 && num%3 == 0)
+                {
+                    y = i;
+                    x = 0;
+                    break;
+                }
+            }
+            if (x == 0 && y == 0) Print(-1);
+            else Print(x+y);
         }
     }
 }
