@@ -18,7 +18,7 @@ namespace BackJoon
 
         static void Main(String[] args)
         {
-            ex2();
+            ex3();
         }
 
         static int Find_Max(int[] card, int sum)
@@ -116,6 +116,44 @@ namespace BackJoon
             int num = ToInt(s);
 
             Find_Small(num);
+        }
+
+        static void ex3()
+        {
+            string s = Read();
+            int[] num = s.Split().Select(x => ToInt(x)).ToArray();
+
+            int[] eq1 = new int[3];
+            int[] eq2 = new int[3];
+
+            Array.Copy(num, 0, eq1, 0, 3);
+            Array.Copy(num, 3, eq2, 0, 3);
+            int x = 0;
+            int y = 0;
+            try
+            {
+                int div = eq1[1] * eq2[0] - eq1[0] * eq2[1];
+                if (div == 0)
+                {
+                    throw new DivideByZeroException();
+                }
+                y = (eq1[2] * eq2[0] - eq1[0] * eq2[2]) / div;
+            }
+            
+            catch (DivideByZeroException)
+            {
+                y = 0;
+            }
+
+            if (eq1[0] == 0)
+            {
+                x = (eq2[2] - eq2[1] * y) / eq2[0];
+            }
+
+            else 
+                x = (eq1[2] - eq1[1] * y) / eq1[0];
+
+            Print(x, y);
         }
     }
 }
