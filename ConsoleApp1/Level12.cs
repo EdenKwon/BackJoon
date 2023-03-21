@@ -19,7 +19,7 @@ namespace BackJoon
 
         static void Main(String[] args)
         {
-            ex7();
+            ex8();
         }
 
         static void insertion_sort(int[] elem)
@@ -275,6 +275,26 @@ namespace BackJoon
             Array.Sort(elem);
             Array.Reverse(elem);
             elem.ToList().ForEach(x => Console.Write(x));
+        }
+
+        static void ex8()
+        {
+            string s = Read();
+            int num = ToInt(s);
+            (int x, int y)[] arr = new (int x, int y)[num];
+
+            for(int i=0; i<num; i++)
+            {
+                string ss = Read();
+                int[] loc = ss.Split().Select(x => ToInt(x)).ToArray();
+                arr[i] = (loc[0], loc[1]);
+            }
+
+            Array.Sort(arr);
+            for(int i=0; i<num; i++)
+            {
+                Print(arr[i].x, arr[i].y);
+            }
         }
     }
 }
