@@ -28,7 +28,7 @@ namespace BackJoon
 
         static void Main(String[] args)
         {
-            ex11();
+            ex5();
         }
 
         static void insertion_sort(int[] elem)
@@ -241,6 +241,25 @@ namespace BackJoon
             elem.ToList().ForEach(x => Print(x));
         }
 
+        static void ex5()
+        {
+            string s = Read();
+            int init = ToInt(s);
+            int[] num = new int[init];
+
+            for(int i = 0; i < init; i++)
+            {
+                string ss = Read();
+                num[i]  = ToInt(ss); 
+            }
+
+            Array.Sort(num);
+            for(int i=0; i<num.Length; i++)
+            {
+                Print(num[i]);
+            }
+        }
+
         static void ex6()
         {
             string s = Read();
@@ -398,6 +417,23 @@ namespace BackJoon
             foreach (ageName p in sortedAN)
             {
                 Print(p.Age, p.Name);
+            }
+        }
+
+        static void ex12()
+        {
+            string s = Read();
+            int num = ToInt(s);
+
+            string ss = Read();
+            int[] loc = new int[num];
+            loc = ss.Split().Select(x => ToInt(x)).ToArray();
+
+            int[] compressedSort = loc.Distinct().OrderBy(x => x).ToArray();
+            foreach (int elem in loc)
+            {
+                int idx = Array.BinarySearch(compressedSort, elem);
+                Console.Write(idx + " ");
             }
         }
     }
