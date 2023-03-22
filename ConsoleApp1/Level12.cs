@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Formats.Asn1.AsnWriter;
@@ -19,7 +21,7 @@ namespace BackJoon
 
         static void Main(String[] args)
         {
-            ex8();
+            ex9();
         }
 
         static void insertion_sort(int[] elem)
@@ -226,7 +228,7 @@ namespace BackJoon
             Thread[] threads = new Thread[]
             {
                 new Thread(() => {
-                    Console.WriteLine(find_average(elem).ToString("F0"));
+                    Print(find_average(elem).ToString("F0"));
                     sem.Release();
                 }),
                 new Thread(() =>
@@ -281,20 +283,106 @@ namespace BackJoon
         {
             string s = Read();
             int num = ToInt(s);
-            (int x, int y)[] arr = new (int x, int y)[num];
-
-            for(int i=0; i<num; i++)
+            List<Point> points = new List<Point>();
+            
+            for(int i=0; i<num; i++) 
             {
                 string ss = Read();
                 int[] loc = ss.Split().Select(x => ToInt(x)).ToArray();
-                arr[i] = (loc[0], loc[1]);
+                points.Add(new Point(loc[0], loc[1]));
             }
 
-            Array.Sort(arr);
-            for(int i=0; i<num; i++)
+            
+            List<Point> sortedPoints = points.OrderBy(p => p.X).ThenBy(p => p.Y).ToList();
+            
+            foreach (Point p in sortedPoints)
             {
-                Print(arr[i].x, arr[i].y);
+                Print(p.X, p.Y);
             }
         }
+
+        static void ex9()
+        {
+            string s = Read();
+            int num = ToInt(s);
+            List<Point> points = new List<Point>();
+
+            for (int i = 0; i < num; i++)
+            {
+                string ss = Read();
+                int[] loc = ss.Split().Select(x => ToInt(x)).ToArray();
+                points.Add(new Point(loc[0], loc[1]));
+            }
+
+            MergeSort(points, 0, points.Count - 1);
+
+            foreach (Point p in points)
+            {
+                Print(p.X, p.Y);
+            }
+        }
+
+        static void MergeSort(List<Point> points, int left, int right)
+        {
+            if (left < right)
+            {
+                int mid = (left + right) / 2;
+                MergeSort(points, left, mid);
+                MergeSort(points, mid + 1, right);
+                Merge(points, left, mid, right);
+            }
+        }
+
+        static void Merge(List<Point> points, int left, int mid, int right)
+        {
+            int n1 = mid - left + 1;
+            int n2 = right - mid;
+            List<Point> leftArr = new List<Point>();
+            List<Point> rightArr = new List<Point>();
+
+            for (int i = 0; i < n1; i++)
+            {
+                leftArr.Add(points[left + i]);
+            }
+
+            for (int j = 0; j < n2; j++)
+            {
+                rightArr.Add(points[mid + 1 + j]);
+            }
+
+            int x = 0;
+            int y = 0;
+            int k = left;
+
+            while (x < n1 && y < n2)
+            {
+                if (leftArr[x].Y < rightArr[y].Y || (leftArr[x].Y == rightArr[y].Y && leftArr[x].X < rightArr[y].X))
+                {
+                    points[k] = leftArr[x];
+                    x++;
+                }
+                else
+                {
+                    points[k] = rightArr[y];
+                    y++;
+                }
+                k++;
+            }
+
+            while (x < n1)
+            {
+                points[k] = leftArr[x];
+                x++;
+                k++;
+            }
+
+            while (y < n2)
+            {
+                points[k] = rightArr[y];
+                y++;
+                k++;
+            }
+        }
+
     }
 }
