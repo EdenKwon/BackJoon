@@ -6,6 +6,8 @@ using System.Diagnostics.Tracing;
 using System.Drawing;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Net.Http.Headers;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Formats.Asn1.AsnWriter;
@@ -17,6 +19,8 @@ namespace BackJoon
         static int ToInt(string s) => int.Parse(s);
         static void Print(int num) { Console.WriteLine(num); }
         static void Print(int num1, int num2) { Console.WriteLine("{0} {1}", num1, num2); }
+        static void Print(string s1, string s2) { Console.WriteLine("{0} {1}", s1, s2); }
+        static void Print(int s1, string s2) { Console.WriteLine("{0} {1}", s1, s2); }
         static void Print(long num) { Console.WriteLine(num); }
         static void Print(double num) { Console.WriteLine(num); }
         static void Print(string s) { Console.WriteLine(s); }
@@ -24,7 +28,7 @@ namespace BackJoon
 
         static void Main(String[] args)
         {
-            ex10();
+            ex11();
         }
 
         static void insertion_sort(int[] elem)
@@ -60,27 +64,6 @@ namespace BackJoon
                         break;
                     }
                 }
-                /*
-                while (j >= 0 && key.Length < elem[j].Length)
-                {
-                    (elem[j], elem[j + 1]) = (elem[j + 1], elem[j]);
-                    j--;
-                    while(j >= 0 && key.Length == elem[j].Length && elem[j].CompareTo(key) > 0)
-                    {
-                        (elem[j], elem[j + 1]) = (elem[j + 1], elem[j]);
-                        j--;
-                    }
-                }
-                
-                while (j >= 0 && key.Length == elem[j].Length)
-                {
-                    while (j >= 0 && elem[j].CompareTo(key) > 0)
-                    {
-                        (elem[j], elem[j + 1]) = (elem[j + 1], elem[j]);
-                        j--;
-                    }
-                }
-                */
                 elem[j + 1] = key;
             }
         }
@@ -382,6 +365,40 @@ namespace BackJoon
             }
             insertion_sort(words);
             words.Distinct().ToList().ForEach(x => Print(x));    
+        }
+
+        struct ageName
+        {
+            public int Age { get; set; }
+            public string Name { get; set; }
+
+            public ageName(int age, string name)
+            {
+                Age = age;
+                Name = name;
+            }
+        }
+
+        static void ex11()
+        {
+            string s = Read();
+            int num = ToInt(s);
+            List<ageName> an = new List<ageName>();
+
+            for (int i=0; i<num; i++)
+            {
+                string ss = Read();
+                string[] info = ss.Split().ToArray();
+                int age = ToInt(info[0]);
+
+                an.Add(new ageName(age, info[1]));
+            }
+
+            List<ageName> sortedAN = an.OrderBy(p => p.Age).ToList();
+            foreach (ageName p in sortedAN)
+            {
+                Print(p.Age, p.Name);
+            }
         }
     }
 }
