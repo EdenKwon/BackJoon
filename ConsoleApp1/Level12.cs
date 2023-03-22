@@ -254,10 +254,7 @@ namespace BackJoon
             }
 
             Array.Sort(num);
-            for(int i=0; i<num.Length; i++)
-            {
-                Print(num[i]);
-            }
+            num.ToList().ForEach(x => Print(x));
         }
 
         static void ex6()
