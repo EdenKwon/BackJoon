@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics.Tracing;
 using System.Drawing;
 using System.Linq;
 using System.Linq.Expressions;
@@ -21,7 +24,7 @@ namespace BackJoon
 
         static void Main(String[] args)
         {
-            ex9();
+            ex10();
         }
 
         static void insertion_sort(int[] elem)
@@ -35,6 +38,49 @@ namespace BackJoon
                     (elem[j], elem[j + 1]) = (elem[j + 1], elem[j]);
                     j--;
                 }
+                elem[j + 1] = key;
+            }
+        }
+
+        static void insertion_sort(string[] elem)
+        {
+            for (int i = 1; i < elem.Length; i++)
+            {
+                string key = elem[i];
+                int j = i - 1;
+                while (j >= 0)
+                {
+                    if (elem[j].Length > key.Length || (elem[j].Length == key.Length && elem[j].CompareTo(key) > 0))
+                    {
+                        (elem[j + 1], elem[j]) = (elem[j], elem[j + 1]);
+                        j--;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+                /*
+                while (j >= 0 && key.Length < elem[j].Length)
+                {
+                    (elem[j], elem[j + 1]) = (elem[j + 1], elem[j]);
+                    j--;
+                    while(j >= 0 && key.Length == elem[j].Length && elem[j].CompareTo(key) > 0)
+                    {
+                        (elem[j], elem[j + 1]) = (elem[j + 1], elem[j]);
+                        j--;
+                    }
+                }
+                
+                while (j >= 0 && key.Length == elem[j].Length)
+                {
+                    while (j >= 0 && elem[j].CompareTo(key) > 0)
+                    {
+                        (elem[j], elem[j + 1]) = (elem[j + 1], elem[j]);
+                        j--;
+                    }
+                }
+                */
                 elem[j + 1] = key;
             }
         }
@@ -314,75 +360,28 @@ namespace BackJoon
                 points.Add(new Point(loc[0], loc[1]));
             }
 
-            MergeSort(points, 0, points.Count - 1);
 
-            foreach (Point p in points)
+            List<Point> sortedPoints = points.OrderBy(p => p.Y).ThenBy(p => p.X).ToList();
+
+            foreach (Point p in sortedPoints)
             {
                 Print(p.X, p.Y);
             }
         }
 
-        static void MergeSort(List<Point> points, int left, int right)
+        static void ex10()
         {
-            if (left < right)
+            string s = Read();
+            int num = ToInt(s);
+            string[] words = new string[num];
+
+            for (int i=0; i< num; i++)
             {
-                int mid = (left + right) / 2;
-                MergeSort(points, left, mid);
-                MergeSort(points, mid + 1, right);
-                Merge(points, left, mid, right);
+                string ss = Read();
+                words[i] = ss;
             }
+            insertion_sort(words);
+            words.Distinct().ToList().ForEach(x => Print(x));    
         }
-
-        static void Merge(List<Point> points, int left, int mid, int right)
-        {
-            int n1 = mid - left + 1;
-            int n2 = right - mid;
-            List<Point> leftArr = new List<Point>();
-            List<Point> rightArr = new List<Point>();
-
-            for (int i = 0; i < n1; i++)
-            {
-                leftArr.Add(points[left + i]);
-            }
-
-            for (int j = 0; j < n2; j++)
-            {
-                rightArr.Add(points[mid + 1 + j]);
-            }
-
-            int x = 0;
-            int y = 0;
-            int k = left;
-
-            while (x < n1 && y < n2)
-            {
-                if (leftArr[x].Y < rightArr[y].Y || (leftArr[x].Y == rightArr[y].Y && leftArr[x].X < rightArr[y].X))
-                {
-                    points[k] = leftArr[x];
-                    x++;
-                }
-                else
-                {
-                    points[k] = rightArr[y];
-                    y++;
-                }
-                k++;
-            }
-
-            while (x < n1)
-            {
-                points[k] = leftArr[x];
-                x++;
-                k++;
-            }
-
-            while (y < n2)
-            {
-                points[k] = rightArr[y];
-                y++;
-                k++;
-            }
-        }
-
     }
 }
