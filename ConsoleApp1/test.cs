@@ -57,6 +57,6 @@ class Cat : Animal
     {
         Console.WriteLine("meow");
         Console.WriteLine("1");
-
+        Console.WriteLine("2");
     }
 }
