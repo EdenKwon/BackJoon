@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "mf0LbYbjdWGPC59S4LqhAkJGQPc/n7UPtfVCJVS/3/2VJn4KlwFauTzD3i3bIMqFHV6aKKOVoxhf6ZeDQMI0BQ==",
+  "dgSpecHash": "TzuLmeyJTTnPDTVk4/D4S4Wn5ReooUWl2cPWAcuQD8d4xA+ooy7S6n973hA/BbC3g12xSkslf2UDd52xv31vTA==",
   "success": true,
   "projectFilePath": "C:\\Users\\User\\workspace\\BackJoon\\ConsoleApp1\\BackJoon.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\User\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
   "logs": []
 }
