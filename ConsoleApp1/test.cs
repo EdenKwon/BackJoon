@@ -49,6 +49,7 @@ class Animal
     {
         Console.WriteLine("zz");
         Console.WriteLine("3");
+        Console.WriteLine("4");
 
     }
 }
