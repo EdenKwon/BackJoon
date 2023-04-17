@@ -48,7 +48,9 @@ class Animal
     public virtual void makeNoise()
     {
         Console.WriteLine("zz");
-    } 
+        Console.WriteLine("3");
+
+    }
 }
 
 class Cat : Animal
