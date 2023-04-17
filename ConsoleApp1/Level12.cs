@@ -26,7 +26,7 @@ namespace BackJoon
         static void Print(string s) { Console.WriteLine(s); }
         private static string Read() => Console.ReadLine();
 
-        static void Main(String[] args)
+        static void lvl12Main(String[] args)
         {
             ex5();
         }
@@ -268,10 +268,10 @@ namespace BackJoon
                 string element = Read();
                 elem[i] = ToInt(element);
             }
-
-            Semaphore sem = new Semaphore(0, 1);
-            Thread[] threads = new Thread[]
             {
+                Semaphore sem = new Semaphore(0, 1);
+                Thread[] threads = new Thread[]
+                {
                 new Thread(() => {
                     Print(find_average(elem).ToString("F0"));
                     sem.Release();
@@ -294,17 +294,47 @@ namespace BackJoon
                     Print(find_range(elem));
                     sem.Release();
                 })
-            };
+                };
+            }
+            {
+                Semaphore sem = new Semaphore(0, 1);
+                Thread[] threads = new Thread[]
+                {
+                new Thread(() => {
+                    find_average(elem).ToString("F0");
+                    sem.Release();
+                }),
+                new Thread(() =>
+                {
+                    sem.WaitOne();
+                    Print(find_middle(elem, num));
+                    sem.Release();
+                }),
+                new Thread(() =>
+                {
+                    sem.WaitOne();
+                    Print(find_mode(elem));
+                    sem.Release();
+                }),
+                new Thread(() =>
+                {
+                    sem.WaitOne();
+                    Print(find_range(elem));
+                    sem.Release();
+                })
+                };
+                foreach (Thread t in threads)
+                {
+                    t.Start();
+                }
 
-            foreach (Thread t in threads)
-            {
-                t.Start();
+                foreach (Thread t in threads)
+                {
+                    t.Join();
+                }
             }
-            
-            foreach (Thread t in threads)
-            {
-                t.Join();
-            }
+
+
         }
         
         static void ex7()
@@ -358,7 +388,6 @@ namespace BackJoon
                 int[] loc = ss.Split().Select(x => ToInt(x)).ToArray();
                 points.Add(new Point(loc[0], loc[1]));
             }
-
 
             List<Point> sortedPoints = points.OrderBy(p => p.Y).ThenBy(p => p.X).ToList();
 
