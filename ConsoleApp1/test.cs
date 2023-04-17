@@ -56,5 +56,7 @@ class Cat : Animal
     public override void makeNoise()
     {
         Console.WriteLine("meow");
+        Console.WriteLine("1");
+        Console.WriteLine("2");
     }
 }
