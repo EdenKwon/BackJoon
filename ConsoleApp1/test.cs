@@ -37,7 +37,8 @@ class Program
 
         else
         {
-            Console.WriteLine("no");            
+            Console.WriteLine("no");
+            Console.WriteLine("no2");
         }
     }
 
